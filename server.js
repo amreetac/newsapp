@@ -56,6 +56,8 @@ app.get('/scrape', function(req, res) {
   //request('https://www.buzzfeed.com/news/', function(error, response, body) {
 	request('http://www.nj.com/#/0', function(error, response, body) {
 
+		//console.log(body);
+
 	//res.send(body);
   	// then, we load that into cheerio and save it to $ for a shorthand selector
     
@@ -69,7 +71,8 @@ app.get('/scrape', function(req, res) {
 
 
 		$('.fullheadline').each(function(i, element) {
-       
+
+       //console.log('river-container ul li');
            // save an empty result object
                 var result = {};
 
@@ -78,7 +81,7 @@ app.get('/scrape', function(req, res) {
                 result.title = $(this).children('a').text();
                 result.link = $(this).children('a').attr('href');
 
-				console.log(result.title + " " + result.link);
+			//	console.log(result.title + " " + result.link);
 
 				// using our Article model, create a new entry.
 				// Notice the (result):
@@ -173,7 +176,36 @@ app.post('/articles/:id', function(req, res){
 	});
 });
 
+/*
 
+//delete the note from both collections (article and notes)
+app.post('/deletenote/:id', function(req, res){
+			Article.find({'_id': req.params.id}, 'note', function(err,doc){
+			// .exec(function(err, doc){
+				if (err){
+					console.log(err);
+				}
+				//deletes the note from the Notes Collection
+					Note.find({'_id' : doc[0].note}).remove().exec(function(err,doc){
+						if (err){
+							console.log(err);
+						}
+
+					});
+				
+			});
+			//deletes the note reference in the article document
+			Article.findOneAndUpdate({'_id': req.params.id}, {$unset : {'note':1}})
+			.exec(function(err, doc){
+				if (err){
+					console.log(err);
+				} else {
+					res.send(doc);
+				}
+			});
+});
+
+*/
 
 
 
