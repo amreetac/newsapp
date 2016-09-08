@@ -176,6 +176,30 @@ app.post('/articles/:id', function(req, res){
 	});
 });
 
+
+// when user clicks the deleter button for a note
+$(document).on('click', '.deleter', function(){
+  // save the p tag that encloses the button
+  var selected = $(this).parent();
+  // make an AJAX GET request to delete the specific note 
+  // this uses the data-id of the p-tag, which is linked to the specific note
+  $.ajax({
+    type: "GET",
+    url: '/delete/' + selected.data('id'), 
+
+    // on successful call
+    success: function(response){
+      // remove the p-tag from the DOM
+      selected.remove();
+      // clear the note and title inputs
+      $('#note').val("");
+      $('#title').val("");
+      // make sure the #actionbutton is submit (in case it's update)
+      $('#actionbutton').html('<button id="makenew">Delete</button>');
+    }
+  });
+});
+
 /*
 
 //delete the note from both collections (article and notes)
