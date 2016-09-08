@@ -1,0 +1,9 @@
+#articles {
+	float:left;
+}
+
+#notes {
+	float: right;
+	border-color: red;
+	border-style: solid;
+}

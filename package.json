@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/amreetac/newsapp/issues"
   },
-  "homepage": "https://github.com/amreetac/newsapp#readme"
+  "homepage": "https://github.com/amreetac/newsapp#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0"
+  }
 }
