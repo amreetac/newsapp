@@ -59,8 +59,8 @@ var BRNewsApp = {
     // empty the notes from the note section
     $('#notes').empty();
     // save the id from the p tag
-    //var thisId = $(this).attr('data-id');
-
+    //var thisId = $().attr('data-id');
+this
      var thisId = data_id;
 
     // now make an ajax call for the Article
@@ -79,13 +79,18 @@ var BRNewsApp = {
         $('#notes').append('<textarea id="bodyinput" name="body"></textarea>'); 
         // a button to submit a new note, with the id of the article saved to it
         $('#notes').append('<button data-id="' + data._id + '" id="savenote">Save Note</button>');
+        
 
+          //debugger;
         // if there's a note in the article
         if(data.note){
           // place the title of the note in the title input
           $('#titleinput').val(data.note.title);
           // place the body of the note in the body textarea
           $('#bodyinput').val(data.note.body);
+
+          //for delete
+        $('#notes').append('<button data-id="' + data.note._id + '" id="deleteNote">Delete Note</button>');
         }
       });
     };
@@ -118,6 +123,36 @@ var BRNewsApp = {
     $('#bodyinput').val("");
   });
 
+
+// when user clicks the deleter button for a note
+$(document).on('click', '#deleteNote', function(){
+
+  debugger;
+  // save the p tag that encloses the button
+   //var selected = $(this).parent();
+   var selected = $(this).attr('data-id');
+   //var thisId = $(this).attr('data-id');
+
+   console.log(selected);
+  // make an AJAX GET request to delete the specific note 
+  // this uses the data-id of the p-tag, which is linked to the specific note
+  $.ajax({
+    type: "GET",
+    url: '/delete/' + selected, 
+
+    // on successful call
+    success: function(response){
+      // remove the p-tag from the DOM
+      //thisId.remove();
+      selected.remove();
+      // clear the note and title inputs
+      $('#note').val("");
+      $('#title').val("");
+      // make sure the #actionbutton is submit (in case it's update)
+      $('#actionbutton').html('<button id="makenew">Delete</button>');
+    }
+  });
+});
 
 // when you click the savenote button
 $(document).on('click', '#startnews', function(){
