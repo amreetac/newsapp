@@ -1,11 +1,23 @@
 body{
-      /*background-color: #DECADE*/
-      background-color: #FCF5C7;
+     
+      background-color: #FFD700;
+}
+
+.jumbotron{
+   content:url(https://pixabay.com/static/uploads/photo/2015/10/05/18/10/newspaper-973049__180.jpg);
+}​
 }
 #wrapper{
   width:960px;
   margin: 0 auto;
   padding-top: 5%;
+  margin-left: 20px;
+}
+
+#article{
+	border-style: dashed;
+	border-color: red;
+	width: 40%;
 }
 #articles{
   width:60%;
@@ -16,6 +28,11 @@ body{
 #notes{
   width:30%;
   float:right;
+}
+
+#pic{
+	float:right;
+	 content:url(https://pixabay.com/static/uploads/photo/2012/02/29/12/17/break-18987__180.jpg);
 }
 textarea, input{
   display:block;
