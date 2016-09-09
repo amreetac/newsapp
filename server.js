@@ -65,7 +65,7 @@ app.get('/scrape', function(req, res) {
 
     //console.log(body);
 
-    var title = $('title').text(); 
+    //var title = $('title').text(); 
     // now, we grab every div tag, and do the following:
     //document.querySelectorAll(".xs-pb3 .xs-block") I put in the console in website to check\
 
