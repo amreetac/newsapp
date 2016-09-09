@@ -1,7 +1,7 @@
 // grab the articles as a json
 $(document).on('ready', function (){
 
-var BRNewsApp = {
+var NewsApp = {
   // Attributes
   articles: [],
   currArticle: 0,
@@ -29,14 +29,14 @@ var BRNewsApp = {
   displayArticle: function() {
     // Display the current Article
 
-// <p data-id="' + this.BRNewsApp[this.currentArticle]._id + '">  title and link
+// <p data-id="' + this.NewsApp[this.currentArticle]._id + '">  title and link
   
     var heading = "<p data-id='" + this.articles[this.currArticle]._id + "'> "+ this.articles[this.currArticle].title +"  </p>";
 
     console.log(heading);
     $('#article').html(heading);
     //debugger;
-    BRnotes(this.articles[this.currArticle]._id);
+    Newsnotes(this.articles[this.currArticle]._id);
   },
 
   nextArticle: function() {
@@ -51,7 +51,7 @@ var BRNewsApp = {
 
   // whenever someone clicks a p tag
   //$(document).on('click', 'p', function(){
-    var BRnotes = function(data_id) {
+    var Newsnotes = function(data_id) {
      // debugger;
     // empty the notes from the note section
     $('#notes').empty();
@@ -159,14 +159,15 @@ $(document).on('click', '#deleteNote', function(){
 // when you click the savenote button
 $(document).on('click', '#startnews', function(){
 
-  BRNewsApp.start();
+  NewsApp.start();
 });
 
 
 $(document).on('click', '#article', function(){
  // alert('uuu');
 //debugger;
-  BRNewsApp.nextArticle();
+  
+  NewsApp.nextArticle();
 });
 
 });
