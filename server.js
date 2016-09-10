@@ -5,6 +5,7 @@
 // dependencies
 var express = require('express');
 var app = express();
+var PORT = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 //var logger = require('morgan');
 var mongoose = require('mongoose');
@@ -23,11 +24,9 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-//mongoose.connect('mongodb://localhost/newsapp');
-//var connection = process.env.MONGODB_URI || 'mongodb://localhost/newsapp';
-//mongoose.connect(connection);
 
-mongoose.connect('mongodb://localhost/newsapp');
+var mongoConfig = process.env.MONGODB_URI || 'mongodb://localhost/newsapp';
+mongoose.connect(mongoConfig);
 
 var db = mongoose.connection;
 
@@ -237,7 +236,7 @@ app.get('/delete/:id', function(req, res) {
 
 
 // listen on port 3000
-app.listen(3000, function() {
+app.listen(PORT, function() {
   console.log('App running on port 3000!');
 });
 
