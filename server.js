@@ -24,7 +24,7 @@ app.use(express.static('public'));
 
 // Database configuration with mongoose
 //mongoose.connect('mongodb://localhost/newsapp');
-mongoose.connect('mongodb://localhost/newsapp' || 'mongodb://heroku_9svfgf2r:bvrct1mgrlek8glco795qe7hlv@ds029106.mlab.com:29106/heroku_9svfgf2r');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/newsapp');
 
 var db = mongoose.connection;
 
