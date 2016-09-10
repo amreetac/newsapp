@@ -24,7 +24,10 @@ app.use(express.static('public'));
 
 // Database configuration with mongoose
 //mongoose.connect('mongodb://localhost/newsapp');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/newsapp');
+//var connection = process.env.MONGODB_URI || 'mongodb://localhost/newsapp';
+//mongoose.connect(connection);
+
+mongoose.connect('mongodb://localhost/newsapp');
 
 var db = mongoose.connection;
 
@@ -234,6 +237,10 @@ app.get('/delete/:id', function(req, res) {
 
 
 // listen on port 3000
-app.listen(process.env.PORT || 3000, function() {
+app.listen(3000, function() {
   console.log('App running on port 3000!');
 });
+
+// app.listen(process.env.PORT || 3000, function() {
+  //console.log('App running on port 3000!');
+//});
